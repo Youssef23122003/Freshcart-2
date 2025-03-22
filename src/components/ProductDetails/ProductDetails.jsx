@@ -4,7 +4,7 @@ import style from './ProductDetails.module.css'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios';
 import { WishlistContext } from '../../context/WishlistContext'
-import Loader from '../Loader/Loader';
+import Spinner from '../Spinner/Spinner';
 import { CartContext } from '../../context/CartContext';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet';
@@ -47,6 +47,8 @@ async function addToFav(id) {
     dots: true,
     infinite: true,
     speed: 500,
+    autoplay: true,
+    autoplaySpeed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
@@ -126,7 +128,7 @@ async function addToFav(id) {
 
     </div>
 
-  </div>: <Loader/>}
+  </div>: <Spinner/>}
   
 
   <div className="flex flex-wrap mt-5 py-5">

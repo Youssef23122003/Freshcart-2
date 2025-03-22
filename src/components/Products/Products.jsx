@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { Helmet } from "react-helmet";
 import { CartContext } from '../../context/CartContext';
 import { WishlistContext } from '../../context/WishlistContext';
-import Loader from '../Loader/Loader';
+import Spinner from '../Spinner/Spinner';
 
 export default function Products() {
   const { addToWishlist } = useContext(WishlistContext);
@@ -100,13 +100,9 @@ export default function Products() {
                     Add To Cart
                   </button>
                   <i
-                    className="fa-solid fa-heart text-3xl"
+                    className="fa-solid text-red-700 fa-heart text-3xl"
                     onClick={() => addToFav(prod._id)}
-                    style={{
-                      color: wishlistState[prod._id] ? "red" : "gray", 
-                      cursor: "pointer",
-                      fontSize: "24px",
-                    }}
+                    
                   ></i>
                 </div>
               </div>
@@ -114,7 +110,7 @@ export default function Products() {
           ))}
         </div>
       ) : (
-        <Loader />
+        <Spinner />
       )}
     </>
   );

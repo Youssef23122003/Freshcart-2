@@ -9,6 +9,8 @@ export default function CategorySlider() {
     infinite: true,
     speed: 500,
     slidesToShow: 6,
+    autoplay: true,
+    autoplaySpeed: 2000,
     slidesToScroll: 2,
     responsive: [
       {

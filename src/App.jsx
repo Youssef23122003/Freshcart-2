@@ -26,45 +26,47 @@ import VerifyCode from './components/Verify-Code/VerifyCode'
 import ResetPassword from './components/ResetPassword/ResetPassword'
 
 
- const queryClient = new QueryClient();
- let routes= createBrowserRouter([
-  {path:'' , element:<Layout/> , children:[
-    {index:true , element:<ProtectRoutes><Home/></ProtectRoutes>},
-    {path:'signup' , element:<Signup/>},
-    {path:'signin' , element:<Signin/>},
-    {path:'products' , element:<ProtectRoutes><Products/></ProtectRoutes>},
-    {path:'cart' , element:<ProtectRoutes><Cart/></ProtectRoutes>},
-    {path:'ForgetPassword' , element:<ForgetPassword/>},
-    {path:'VerifyCode' , element:<VerifyCode/>},
-    {path:'ResetPassword' , element:<ResetPassword/>},
-    {path:'payment' , element:<ProtectRoutes><Payment/></ProtectRoutes>},
-    {path:'productDetails/:id/:category' , element:<ProtectRoutes><ProductDetails/></ProtectRoutes>},
-    {path:'brands' , element:<ProtectRoutes><Brands/></ProtectRoutes>},
-    {path:'categories' , element:<ProtectRoutes><Categories/></ProtectRoutes>},
-    {path:'wishlist' , element:<ProtectRoutes><Wishlist/></ProtectRoutes>},
-    {path:'*' , element:<Notfound/>},
-  ]},
-
-
- ])
-
+const queryClient = new QueryClient();
+let routes = createBrowserRouter([
+  {
+    path: '', 
+    element: <Layout/>, 
+    children: [
+      { index: true, element: <ProtectRoutes><Home/></ProtectRoutes> },
+      { path: 'signup', element: <Signup/> },
+      { path: 'signin', element: <Signin/> },
+      { path: 'products', element: <ProtectRoutes><Products/></ProtectRoutes> },
+      { path: 'cart', element: <ProtectRoutes><Cart/></ProtectRoutes> },
+      { path: 'ForgetPassword', element: <ForgetPassword/> },
+      { path: 'VerifyCode', element: <VerifyCode/> },
+      { path: 'ResetPassword', element: <ResetPassword/> },
+      { path: 'payment', element: <ProtectRoutes><Payment/></ProtectRoutes> },
+      { path: 'productDetails/:id/:category', element: <ProtectRoutes><ProductDetails/></ProtectRoutes> },
+      { path: 'brands', element: <ProtectRoutes><Brands/></ProtectRoutes> },
+      { path: 'categories', element: <ProtectRoutes><Categories/></ProtectRoutes> },
+      { path: 'wishlist', element: <ProtectRoutes><Wishlist/></ProtectRoutes> },
+      
+      { path: '*', element: <Notfound/> },
+    ]
+  }
+])
 
 function App() {
   const [count, setCount] = useState(0)
 
-  return <>
- <QueryClientProvider client={queryClient}>
-    <WishlistContextProvider>
+  return (
+    <QueryClientProvider client={queryClient}>
+      <WishlistContextProvider>
         <CartContextProvider>
           <CounterContextProvider>
             <UserContextProvider>                   
-              <RouterProvider router={routes}></RouterProvider>
-          </UserContextProvider>
-         </CounterContextProvider>
+              <RouterProvider router={routes} />
+            </UserContextProvider>
+          </CounterContextProvider>
         </CartContextProvider>
-    </WishlistContextProvider>
- </QueryClientProvider> 
-  </>
+      </WishlistContextProvider>
+    </QueryClientProvider>
+  )
 }
 
 export default App

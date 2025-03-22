@@ -16,3 +16,10 @@ body{
 .fa-heart{
   cursor: pointer;
 }
+
+.active{
+  color: white;
+  background-color: rgb(24, 186, 24);
+  padding: 4px;
+  border-radius: 5px;
+}

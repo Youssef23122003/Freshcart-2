@@ -32,7 +32,7 @@ export default function Navbar() {
             </button>
           </div>
           <div className={`links flex flex-col lg:flex-row lg:items-center ${isMenuOpen ? 'block' : 'hidden'} lg:flex`}>
-            {userLogin !== null ? (
+            {userLogin !== null && localStorage.getItem('userToken') !== null ? (
               <ul className='flex flex-col lg:flex-row lg:items-center'>
                 <li className='px-3 py-2'><NavLink to='/'>Home</NavLink></li>
                 <li className='px-3 py-2'><NavLink to='products'>Products</NavLink></li>
@@ -53,7 +53,7 @@ export default function Navbar() {
             className={`extra-links flex flex-col lg:flex-row lg:items-center ${isMenuOpen ? 'block' : 'hidden'} lg:block`}
           >
             <ul className='flex flex-col lg:flex-row lg:items-center'>
-              {userLogin == null ? (
+              {userLogin === null || localStorage.getItem('userToken') === null ? (
                 <>
                   <li className='px-3 py-2'><NavLink to='signup'>Register</NavLink></li>
                   <li className='px-3 py-2'><NavLink to='signin'>Login</NavLink></li>

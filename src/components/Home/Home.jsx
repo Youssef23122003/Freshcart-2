@@ -25,7 +25,7 @@ export default function Home() {
   <CategorySlider/>
 
   <RecentProducts/>
-
+  <section className='py-4'></section>
 
   
   

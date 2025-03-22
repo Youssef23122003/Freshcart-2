@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import style from './Signup.module.css'
-import { useFormik } from 'formik'
 
+import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -29,12 +28,11 @@ let navigate= useNavigate()
 
 async  function handleSubmit(val){
   setloading(true)
-    // call api 
   console.log(val);
     let {data} = await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/signup` ,val)
     .then((resp)=>{
       console.log(resp.data.token);
-      setuserLogin(resp.data.token)
+      setuserLogin(null)
       localStorage.setItem('userToken' ,resp.data.token )
       
       // resp tmam
@@ -52,7 +50,7 @@ async  function handleSubmit(val){
       setloading(false)
       console.log(error);
      
-      setapiError(error.response.data.message)
+      setapiError(error.response?.data?.message || 'An error occurred')
 
     })
     
@@ -64,29 +62,7 @@ console.log(data);
 
   }
 
-  // function handleValidation(value){
-  //   let errors ={}
-  //   if(value.name = ''){
-  //     errors.name='name is required'
-  //   }
-  //   else if (!/^[A-Z][a-z]{3,5}/.test(value.name)){
-  //     errors.name='Name must strat with capita letter min 3 max 5'
-
-  //   }
-
-
-  //   if(value.email = ''){
-  //     errors.email='email is required'
-  //   }
-  //   else if (!/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(value.email)){
-  //     errors.email='invalid mail'
-
-  //   }
   
-   
-
-  // return errors
-  // }
  
 let formik= useFormik({
   initialValues:{

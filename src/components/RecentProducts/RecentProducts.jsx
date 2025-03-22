@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import style from './RecentProducts.module.css'
 import axios from 'axios'
-import Loader from '../Loader/Loader'
+import Spinner from '../Spinner/Spinner'
 import { Link } from 'react-router-dom'
 import { CounterContext } from '../../context/CounterContext'
 import { CartContext } from '../../context/CartContext'
@@ -105,18 +105,14 @@ return (
   </Link>
   <div className='flex items-center gap-2'>
   <button  onClick={()=>{addProducrToCart(prod._id)}}   className='btn opacity-0 group-hover:opacity-100  transition-all'>Add To Cart</button>
-      <i class="fa-solid fa-heart text-3xl" onClick={()=>{addToFav(prod._id)}}  style={{
-                      color: wishlistState[prod._id] ? "red" : "gray",
-                      cursor: "pointer",
-                      fontSize: "24px",
-                    }}
+      <i class="fa-solid text-red-700 fa-heart text-3xl" onClick={()=>{addToFav(prod._id)}}  
       ></i>
   </div>
   
   </div>
   </div> })}
 
-</div>:<Loader/>}
+</div>:<Spinner/>}
 
 
 </>)

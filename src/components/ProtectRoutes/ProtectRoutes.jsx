@@ -1,25 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import style from './ProtectRoutes.module.css'
+import React from 'react'
 import { Navigate } from 'react-router-dom'
+import { UserContext } from '../../context/UserContext'
+import { useContext } from 'react'
 
-export default function ProtectRoutes(props) {
-    const [count, setcount] = useState(0)
+export default function ProtectRoutes({ children }) {
+    let { userLogin } = useContext(UserContext)
+    let userToken = localStorage.getItem('userToken')
 
-    if(localStorage.getItem('userToken')!==null){
-      return  props.children
-
+    if (userToken === null) {
+        return <Navigate to="/signin" />
     }
-    else{
-     return <Navigate to='/signin'/>
-    }
 
-    useEffect(()=>{
-
-    })
-  return  <>
-
-  
-  
-  
-  </>
+    return children
 }
